@@ -1,7 +1,7 @@
 Laravel Request Logger
 ======================
 
-[![Build Status](https://travis-ci.org/landrok/laravel-request-logger.svg?branch=master)](https://travis-ci.org/landrok/laravel-request-logger)
+[![Build Status](https://travis-ci.com/landrok/laravel-request-logger.svg?branch=master)](https://travis-ci.com/landrok/laravel-request-logger)
 [![Test Coverage](https://codeclimate.com/github/landrok/laravel-request-logger/badges/coverage.svg)](https://codeclimate.com/github/landrok/laravel-request-logger/coverage)
 [![Code Climate](https://codeclimate.com/github/landrok/laravel-request-logger/badges/gpa.svg)](https://codeclimate.com/github/landrok/laravel-request-logger)
 
