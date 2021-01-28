@@ -28,11 +28,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Landrok\\Laravel\\RequestLogger\\ServiceProvider"
-            ],
-            "aliases": {
-                "RequestLogger": "Landrok\\Laravel\\RequestLogger\\Facade"
-            }
+                "Landrok\\Laravel\\RequestLogger\\RequestLoggerServiceProvider"
+            ]
         }
     }
 }
