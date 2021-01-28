@@ -85,6 +85,12 @@ ________________________________________________________________________
 ```
 composer require landrok/laravel-request-logger
 ```
+
+Create the `request_logs` table with
+
+```
+php artisan migrate
+```
 ________________________________________________________________________
 
 ## Configuration

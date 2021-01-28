@@ -1,7 +1,7 @@
 {
     "name": "landrok/laravel-request-logger",
     "type": "library",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "A Laravel middleware to log HTTP requests into database.",
     "keywords": ["Laravel", "Logger", "Database", "Performances"],
     "homepage": "https://github.com/landrok/laravel-request-logger",
