@@ -17,7 +17,7 @@ class RequestLoggerServiceProvider extends ServiceProvider
             dirname(__DIR__, 2) . '/config/requestlogger.php' => config_path('requestlogger.php'),
         ], 'config');
 
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+        $this->loadMigrationsFrom(dirname(__DIR__, 2) . '/database/migrations');
     }
 
     /**

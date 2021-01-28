@@ -23,7 +23,12 @@ class RequestLoggerMiddleware
      * @var \Illuminate\Http\Response
      */
     private $response;
-    
+
+    public function handle($request, Closure $next)
+    {
+        return $next($request);
+    }
+
     /**
      * Log various informations before sending response.
      *

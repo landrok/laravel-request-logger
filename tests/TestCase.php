@@ -78,7 +78,7 @@ abstract class TestCase extends TestBench
         ]);
 
         // Run migrations
-        require_once dirname(__DIR__) . '/database/migrations/create_request_logs_table.php';
+        require_once dirname(__DIR__) . '/database/migrations/2020_12_25_000000_create_request_logs_table.php';
 
         (new \CreateRequestLogsTable())->up();
     }
