@@ -5,8 +5,8 @@ namespace Landrok\Laravel\RequestLoggerTest;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Schema;
-use Orchestra\Testbench\TestCase as TestBench;
 use Landrok\Laravel\RequestLogger\RequestLoggerServiceProvider;
+use Orchestra\Testbench\TestCase as TestBench;
 
 abstract class TestCase extends TestBench
 {
@@ -43,9 +43,9 @@ abstract class TestCase extends TestBench
     {
         $app['config']->set('database.default', 'sqlite');
         $app['config']->set('database.connections.sqlite', [
-            'driver' => 'sqlite',
-            'database' => ':memory:',
-            'prefix' => '',
+            'driver'    => 'sqlite',
+            'database'  => ':memory:',
+            'prefix'    => '',
         ]);
 
         $app['config']->set('requestlogger.connection', 'sqlite');
@@ -72,13 +72,13 @@ abstract class TestCase extends TestBench
 
         // Fill in with a simple user
         User::create([
-            'name' => 'TESTUSER',
-            'email' => 'test@test.com',
-            'password' => 'testpwd',
+            'name'      => 'TESTUSER',
+            'email'     => 'test@test.com',
+            'password'  => 'testpwd',
         ]);
 
         // Run migrations
-        include_once dirname(__DIR__) . '/database/migrations/2020_11_28_010000_create_request_logs_table.php';
+        require_once dirname(__DIR__) . '/database/migrations/create_request_logs_table.php';
 
         (new \CreateRequestLogsTable())->up();
     }

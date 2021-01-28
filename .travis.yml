@@ -1,0 +1,36 @@
+language: php
+
+sudo: required
+dist: trusty
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+php:
+  - 7.4
+  - 8.0
+  - nightly
+
+matrix:
+  allow_failures:
+    - php: nightly
+
+install:
+  - composer install --prefer-source --no-interaction
+  # PHPUnit
+  - ./vendor/bin/phpunit --version
+
+before_script:
+    # Install Code climate reporter
+    - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+    - chmod +x ./cc-test-reporter
+    - ./cc-test-reporter before-build
+
+script:
+  # Run PHP unit tests
+  - ./vendor/bin/phpunit
+
+after_script:
+  # Code climate
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

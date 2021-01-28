@@ -2,7 +2,6 @@
 
 namespace Landrok\Laravel\RequestLogger;
 
-use Landrok\Laravel\RequestLogger;
 use Illuminate\Support\ServiceProvider;
 
 class RequestLoggerServiceProvider extends ServiceProvider
@@ -16,7 +15,7 @@ class RequestLoggerServiceProvider extends ServiceProvider
     {
         $this->publishes([
             dirname(__DIR__, 2) . '/config/requestlogger.php' => config_path('requestlogger.php'),
-        ]);
+        ], 'config');
 
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
     }

@@ -72,7 +72,7 @@ ________________________________________________________________________
 
 ## Requirements
 
-Laravel Request Logger supports Laravel 5, 6, 7, 8.
+Laravel Request Logger supports Laravel 6, 7, 8.
 
 ________________________________________________________________________
 
