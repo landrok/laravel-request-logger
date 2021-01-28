@@ -19,14 +19,14 @@ install:
   - ./vendor/bin/phpunit --version
 
 before_script:
-    # Install Code climate reporter
+    # Install code climate reporter
     - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
     - chmod +x ./cc-test-reporter
     - ./cc-test-reporter before-build
 
 script:
   # Run PHP unit tests
-  - ./vendor/bin/phpunit
+  - ./vendor/bin/phpunit -c phpunit.xml.dist
 
 after_script:
   # Code climate
