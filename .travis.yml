@@ -4,6 +4,10 @@ cache:
   directories:
     - $HOME/.composer/cache
 
+env:
+    global:
+        - XDEBUG_MODE=coverage
+
 php:
   - 7.4
   - 8.0
