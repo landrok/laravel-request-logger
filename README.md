@@ -1,6 +1,10 @@
 Laravel Request Logger
 ======================
 
+[![Build Status](https://travis-ci.org/landrok/language-detector.svg?branch=master)](https://travis-ci.org/landrok/language-detector)
+[![Test Coverage](https://codeclimate.com/github/landrok/laravel-request-logger/badges/coverage.svg)](https://codeclimate.com/github/landrok/laravel-request-logger/coverage)
+[![Code Climate](https://codeclimate.com/github/landrok/laravel-request-loggerbadges/gpa.svg)](https://codeclimate.com/github/landrok/language-detector)
+
 Laravel Request Logger provides a middleware that logs HTTP requests
 into a table.
 
