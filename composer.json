@@ -1,0 +1,38 @@
+{
+    "name": "landrok/laravel-request-logger",
+    "type": "library",
+    "version": "1.0.0",
+    "description": "A Laravel middleware to log HTTP requests into database.",
+    "keywords": ["Laravel", "Logger", "Database", "Performances"],
+    "homepage": "https://github.com/landrok/laravel-request-logger",
+    "license": "MIT",
+    "require": {
+        "php": ">=7.1",
+        "illuminate/database": "^8.24",
+        "jenssegers/agent": "^2.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "orchestra/testbench": "^6.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Landrok\\Laravel\\RequestLogger\\": "src/RequestLogger/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Landrok\\Laravel\\RequestLoggerTest\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Landrok\\Laravel\\RequestLogger\\ServiceProvider"
+            ],
+            "aliases": {
+                "RequestLogger": "Landrok\\Laravel\\RequestLogger\\Facade"
+            }
+        }
+    }
+}
