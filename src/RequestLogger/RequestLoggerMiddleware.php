@@ -94,7 +94,9 @@ class RequestLoggerMiddleware
             case 'status_code':
                 return $this->response->getStatusCode();
             case 'url':
-                return $this->request->url();
+                return config('requestlogger.fields.url') == 'full'
+                    ? $this->request->fullUrl()
+                    : $this->request->url();
             case 'referer':
                 return $this->request->headers->has('referer')
                     ? substr($this->request->headers->get('referer'), 0, 255)

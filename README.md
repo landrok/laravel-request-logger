@@ -32,7 +32,7 @@ __HTTP stuff__
 
 - method
 - status_code
-- url
+- url: this one has 2 ways of configuration: set it to `full` to log full URL with query or set it to `true` to log only URL
 - referer
 - referer_host
 - request_headers: optional
@@ -57,7 +57,7 @@ The following values are provided by the `jenssegers/agent` package.
 
 __Miscellaneous__
 
-- meta : this field is for custom logging. See RequestLogger::meta($value) 
+- meta : this field is for custom logging. See RequestLogger::meta($value)
 - created_at
 
 
@@ -106,7 +106,7 @@ The config file can be found at `config/requestlogger.php`.
 
 ________________________________________________________________________
 
-## Meta::set(string $key, $value) 
+## Meta::set(string $key, $value)
 
 This tool is made to log anything from anywhere in your code
 (Controller, View, Service, etc...) into the `meta` column.
