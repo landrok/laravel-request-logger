@@ -27,7 +27,7 @@ class CreateRequestLogsTable extends Migration
             $table->text('route_params')->nullable();
 
             // Performances__
-            $table->unsignedDecimal('duration', 16, 8)->nullable();
+            $table->decimal('duration', 16, 8)->nullable();
             $table->unsignedInteger('mem_alloc')->nullable();
 
             // HTTP
@@ -51,7 +51,7 @@ class CreateRequestLogsTable extends Migration
             $table->boolean('is_mobile')->nullable();
             $table->boolean('is_phone')->nullable();
             $table->boolean('is_robot')->nullable();
-            $table->string('robot_name')->nullable();            
+            $table->string('robot_name')->nullable();
             $table->string('user_agent')->nullable();
 
             // Miscellaneous
