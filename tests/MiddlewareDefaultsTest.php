@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Landrok\Laravel\RequestLogger\RequestLog;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Landrok\Laravel\RequestLogger\RequestLoggerMiddleware;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
@@ -48,7 +49,7 @@ class MiddlewareDefaultsTest extends TestCase
     /**
      * Scenarios
      */
-    public function getScenarios(): array
+    public static function getScenarios(): array
     {
         return [
             // method, path, user, status_code, route
@@ -60,13 +61,11 @@ class MiddlewareDefaultsTest extends TestCase
 
             // method, path, user, status_code, route
             // Params should not be logged by default
-            'get-200-route-with-params'   => ['GET', '/check-request-logger/123456', null, 200, 'route-with-params'], 
+            'get-200-route-with-params'   => ['GET', '/check-request-logger/123456', null, 200, 'route-with-params'],
         ];
     }
 
-    /**
-     * @dataProvider getScenarios
-     */
+    #[DataProvider('getScenarios')]
     public function test_middleware($method, $path, $user = null, $status_code = null, $route = null): void
     {
         if (!is_null($user)) {
@@ -80,11 +79,11 @@ class MiddlewareDefaultsTest extends TestCase
             $method
         );
         $sfRequest->headers->set('Referer', 'http://localhost/referer');
-        
+
         $response = new Response('', $status_code);
 
         $request = Request::createFromBase($sfRequest);
-        
+
         $request->setRouteResolver(function() { return 'check'; });
 
         // Try to dispatch route (may not exist)
@@ -103,7 +102,7 @@ class MiddlewareDefaultsTest extends TestCase
         // User
         if (!is_null($user)) {
             $this->assertEquals($log->user_id, $user->id);
-            $this->assertEquals($log->user->name, $user->name);            
+            $this->assertEquals($log->user->name, $user->name);
         } else {
             $this->assertEquals($log->user_id, null);
         }
@@ -135,7 +134,7 @@ class MiddlewareDefaultsTest extends TestCase
         $this->assertEquals($log->is_mobile, 0);
         $this->assertEquals($log->is_phone, 0);
         $this->assertEquals($log->is_robot, 0);
-        $this->assertEquals($log->robot_name, 0);            
+        $this->assertEquals($log->robot_name, 0);
         $this->assertEquals($log->user_agent, 'Symfony');
 
         $this->assertEquals($log->meta, null);

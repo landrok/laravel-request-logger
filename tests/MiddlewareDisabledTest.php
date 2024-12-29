@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Landrok\Laravel\RequestLogger\RequestLog;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Landrok\Laravel\RequestLogger\RequestLoggerMiddleware;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
@@ -48,7 +49,7 @@ class MiddlewareDisabledTest extends TestCase
     /**
      * Scenarios
      */
-    public function getScenarios(): array
+    public static function getScenarios(): array
     {
         return [
             // method, path, user, status_code, route
@@ -60,13 +61,11 @@ class MiddlewareDisabledTest extends TestCase
 
             // method, path, user, status_code, route
             // Params won't be logged by default
-            'get-200-route-with-params'   => ['GET', '/check-request-logger/123456', null, 200, 'route-with-params'], 
+            'get-200-route-with-params'   => ['GET', '/check-request-logger/123456', null, 200, 'route-with-params'],
         ];
     }
 
-    /**
-     * @dataProvider getScenarios
-     */
+    #[DataProvider('getScenarios')]
     public function test_middleware($method, $path, $user = null, $status_code = null, $route = null): void
     {
         if (!is_null($user)) {

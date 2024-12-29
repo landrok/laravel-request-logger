@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Landrok\Laravel\RequestLogger\RequestLog;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Landrok\Laravel\RequestLogger\RequestLoggerMiddleware;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
@@ -49,7 +50,7 @@ class MiddlewareFullUrlTest extends TestCase
     /**
      * Scenarios
      */
-    public function getScenarios(): array
+    public static function getScenarios(): array
     {
         return [
             // method, path, user, status_code, route
@@ -65,9 +66,7 @@ class MiddlewareFullUrlTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider getScenarios
-     */
+    #[DataProvider('getScenarios')]
     public function test_middleware($method, $path, $user = null, $status_code = null, $route = null, $route_params = null): void
     {
         if (!is_null($user)) {

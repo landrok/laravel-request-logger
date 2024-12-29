@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Landrok\Laravel\RequestLogger\RequestLog;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Landrok\Laravel\RequestLogger\RequestLoggerMiddleware;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
@@ -49,7 +50,7 @@ class MiddlewareMetaTest extends TestCase
     /**
      * Scenarios
      */
-    public function getScenarios(): array
+    public static function getScenarios(): array
     {
         return [
             // method, path, user, status_code, route
@@ -61,13 +62,11 @@ class MiddlewareMetaTest extends TestCase
 
             // method, path, user, status_code, route
             // Params won't be logged by default
-            'get-200-route-with-metas'   => ['GET', '/check-request-logger/123456', null, 200, 'route-with-params', ['key-1' => 'value-1', 'key-2' => ['Array']]], 
+            'get-200-route-with-metas'   => ['GET', '/check-request-logger/123456', null, 200, 'route-with-params', ['key-1' => 'value-1', 'key-2' => ['Array']]],
         ];
     }
 
-    /**
-     * @dataProvider getScenarios
-     */
+    #[DataProvider('getScenarios')]
     public function test_middleware($method, $path, $user = null, $status_code = null, $route = null, $meta = null): void
     {
         if (!is_null($user)) {
@@ -108,7 +107,7 @@ class MiddlewareMetaTest extends TestCase
         // User
         if (!is_null($user)) {
             $this->assertEquals($log->user_id, $user->id);
-            $this->assertEquals($log->user->name, $user->name);            
+            $this->assertEquals($log->user->name, $user->name);
         } else {
             $this->assertEquals($log->user_id, null);
         }
@@ -140,7 +139,7 @@ class MiddlewareMetaTest extends TestCase
         $this->assertEquals($log->is_mobile, 0);
         $this->assertEquals($log->is_phone, 0);
         $this->assertEquals($log->is_robot, 0);
-        $this->assertEquals($log->robot_name, 0);            
+        $this->assertEquals($log->robot_name, 0);
         $this->assertEquals($log->user_agent, 'Symfony');
 
         $this->assertEquals($log->meta, is_null($meta) ? null : json_encode($meta));

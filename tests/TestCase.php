@@ -3,8 +3,6 @@
 namespace Landrok\Laravel\RequestLoggerTest;
 
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Schema;
 use Landrok\Laravel\RequestLogger\RequestLoggerServiceProvider;
 use Orchestra\Testbench\TestCase as TestBench;
 
